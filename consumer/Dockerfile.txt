@@ -1,0 +1,18 @@
+# Use official Python base image
+FROM python:3.10-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy code
+COPY . .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Optional: Set Google service account credentials if using file-based auth
+# COPY service-account.json /app/service-account.json
+# ENV GOOGLE_APPLICATION_CREDENTIALS="/app/service-account.json"
+
+# Run consumer script
+CMD ["python", "main.py"]
